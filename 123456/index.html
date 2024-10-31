@@ -1426,7 +1426,7 @@
     function initViewer() {
         var canvas = document.getElementById('cv');
         viewer3d = new JSC3D.Viewer(canvas);
-        viewer3d.setParameter('SceneUrl', 'https://github.com/mdecad2024/hw-41223236/blob/main/downloads/1024-5.stl'); // 替換為你的STL文件URL
+        viewer3d.setParameter('SceneUrl', 'http://localhost:8000/1024-5.stl'); // 替換為你的STL文件URL
         viewer3d.init();
         viewer3d.update();
     }
