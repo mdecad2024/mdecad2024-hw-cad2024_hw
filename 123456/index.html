@@ -13,8 +13,7 @@
         function initViewer() {
             var canvas = document.getElementById('cv');
             viewer3d = new JSC3D.Viewer(canvas);
-            // 在這裡設置 STL 文件的 URL
-            viewer3d.setParameter('SceneUrl', 'https://raw.githubusercontent.com/mdecad2024/hw-41223236/main/downloads/1024-5.stl'); // 確保這裡的 URL 是正確的
+            viewer3d.setParameter('SceneUrl', 'https://raw.githubusercontent.com/mdecad2024/hw-41223236/main/downloads/1024-5.stl');
             viewer3d.init();
             viewer3d.update();
         }
