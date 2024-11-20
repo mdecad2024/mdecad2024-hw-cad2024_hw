@@ -84,6 +84,8 @@
 <p><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></p>
 <!-- 第五個 STL 模型 -->
 <p><canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第六個 STL 模型 -->
+<p><canvas height="300" id="cv6" style="border: 1px solid;" width="400"></canvas></p>
 <div style="width: 400px; height: 90px; border: 1px solid;">Model Color: <input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1: <input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2: <input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/> <br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
 <option>Flat</option>
 <option>Point</option>
@@ -96,7 +98,7 @@
 </select></div>
 <p><span>
 <script type="text/javascript">
-var viewer3d_1, viewer3d_2, viewer3d_3, viewer3d_4, viewer3d_5;
+var viewer3d_1, viewer3d_2, viewer3d_3, viewer3d_4, viewer3d_5, viewer3d_6;
 
 function getOptions() {
     var mc = document.getElementById("mdlClr").value;
@@ -138,6 +140,8 @@ function readSTLfile(opt, canvasId) {
         viewer3d_4 = viewer3d;  // 保存第四個 viewer 實例
     } else if (canvasId === "cv5") {
         viewer3d_5 = viewer3d;  // 保存第五個 viewer 實例
+    } else if (canvasId === "cv6") {
+        viewer3d_6 = viewer3d;  // 保存第六個 viewer 實例
     }
 }
 
@@ -168,14 +172,20 @@ function changeOption(strOpt, strValue) {
         viewer3d_5.init();
         viewer3d_5.update();
     }
+    if (viewer3d_6) {
+        viewer3d_6.setParameter(strOpt, strValue);
+        viewer3d_6.init();
+        viewer3d_6.update();
+    }
 }
 
 function openByGet() {
     var url1 = "https://s104.cycu.org/~41223236/1018-2.stl";  // 第一個 STL 的 URL
-    var url2 = "https://s104.cycu.org/~41223236/1024-5.stl";  // 第二個 STL 的 URL
-    var url3 = "https://s104.cycu.org/~41223236/1024-6.stl";  // 第三個 STL 的 URL
-    var url4 = "https://s104.cycu.org/~41223236/1101-7.stl";  // 第四個 STL 的 URL
-    var url5 = "https://s104.cycu.org/~41223236/1101-9.stl";  // 第五個 STL 的 URL
+    var url2 = "https://s104.cycu.org/~41223236/1018-3.stl";  // 第二個 STL 的 URL
+    var url3 = "https://s104.cycu.org/~41223236/1024-5.stl";  // 第三個 STL 的 URL
+    var url4 = "https://s104.cycu.org/~41223236/1024-6.stl";  // 第四個 STL 的 URL
+    var url5 = "https://s104.cycu.org/~41223236/1101-7.stl";  // 第五個 STL 的 URL
+    var url6 = "https://s104.cycu.org/~41223236/1101-9.stl";  // 第六個 STL 的 URL
     var opt = getOptions();
 
     // 設置第一個 STL 的 URL 和渲染
@@ -197,6 +207,10 @@ function openByGet() {
     // 設置第五個 STL 的 URL 和渲染
     opt.SceneUrl = url5;
     readSTLfile(opt, "cv5");
+
+    // 設置第六個 STL 的 URL 和渲染
+    opt.SceneUrl = url6;
+    readSTLfile(opt, "cv6");
 }
 
 function GetQueryString() {
@@ -244,7 +258,8 @@ openByGet();
 <p style="padding-left: 30px;">請將操作影片嵌入 ......</p>
 <p style="padding-left: 30px;">所完成的零件檔案下載</p>
 <h2>w7</h2>
-<p><span></span></p>
+<br/><br/><span></span>W10
+<p></p>
 <h1>HW2</h1>
 <p>Homework 2 (10%):</p>
 <p style="padding-left: 30px;">利用 Solvespace 與 NX 建立 <a href="https://mde.tw/cad2024/content/BonW.html">Balance on Wheels</a> 組立件</p>
