@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update Git submodules
-git submodule update --init
+/workspaces/hw-jjjay41223212/downloadsgit submodule update --init
 
 # Install Python packages using pip
 pip install flask flask_cors bs4 lxml pelican markdown gevent
