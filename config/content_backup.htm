@@ -15,9 +15,9 @@
 <p>個人倉儲: <a href="https://github.com/mdecad2024/hw-41223236">https://github.com/mdecad2024/hw-41223236</a></p>
 <p>個人網站: <a class="Link--inTextBlock" href="https://mdecad2024.github.io/hw-41223236/">https://mdecad2024.github.io/hw-41223236/</a></p>
 <p>其他資訊:</p>
-<p><a href="/downloads/piece_composite.stl">/downloads/piece_composite.stl</a></p>
-<p><a href="/downloads/slider.stl" target="_blank">/downloads/slider.stl</a></p>
-<p><span><a href="/downloads/1-1.stl"></a></span></p><h1>Attendance</h1>
+<p><a href="/downloads/piece_composite.stl"></a></p>
+<p><span><a href="/downloads/零件.zip">/downloads/零件.zip</a></span></p>
+<h1>Attendance</h1>
 <p>出席 (10%) - 自行舉證評分</p>
 <p>自行利用 Github commits 提交記錄評分.</p>
 <p><a href="/downloads/cd2023_pj3ag4_zmq_football_4.7.7z">/downloads/cd2023_pj3ag4_zmq_football_4.7.7z</a></p>
@@ -259,7 +259,8 @@ openByGet();
 <p style="padding-left: 30px;">請將操作影片嵌入 ......</p>
 <p style="padding-left: 30px;">所完成的零件檔案下載</p>
 <h2>w7</h2>
-<p></p><h2>w10</h2>
+<p></p>
+<h2>w10</h2>
 <p>題目一</p>
 <p>影片：</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/tUO9dLUq9Ko" width="560"></iframe></p>
@@ -284,114 +285,6 @@ openByGet();
 <option>high</option>
 </select></p>
 </div>
-<p>
-<script type="text/javascript">
-var viewer3d_1, viewer3d_2;
-
-function getOptions() {
-    var mc = document.getElementById("mdlClr").value;
-    var bc1 = document.getElementById("bckClr1").value;
-    var bc2 = document.getElementById("bckClr2").value;
-    var ren = document.getElementById("render").value;
-    var def = document.getElementById("defini").value;
-    return {
-        ModelColor: mc,
-        BackgroundColor1: bc1,
-        BackgroundColor2: bc2,
-        RenderMode: ren,
-        Definition: def
-    };
-}
-
-// 創建 viewer 並加載第一個 STL 檔案
-function readSTLfile1(opt, url) {
-    var canvas = document.getElementById('cv1');  // 使用第一個 canvas
-    viewer3d_1 = new JSC3D.Viewer(canvas);
-    viewer3d_1.setParameter('SceneUrl', url);
-    viewer3d_1.setParameter('InitRotationX', 0);
-    viewer3d_1.setParameter('InitRotationY', 0);
-    viewer3d_1.setParameter('InitRotationZ', 0);
-    viewer3d_1.setParameter('ModelColor', opt.ModelColor);
-    viewer3d_1.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d_1.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d_1.setParameter('RenderMode', opt.RenderMode);
-    viewer3d_1.setParameter('Definition', opt.Definition);
-    viewer3d_1.init();
-    viewer3d_1.update();
-}
-
-// 創建 viewer 並加載第二個 STL 檔案
-function readSTLfile2(opt, url) {
-    var canvas = document.getElementById('cv2');  // 使用第二個 canvas
-    viewer3d_2 = new JSC3D.Viewer(canvas);
-    viewer3d_2.setParameter('SceneUrl', url);
-    viewer3d_2.setParameter('InitRotationX', 0);
-    viewer3d_2.setParameter('InitRotationY', 0);
-    viewer3d_2.setParameter('InitRotationZ', 0);
-    viewer3d_2.setParameter('ModelColor', opt.ModelColor);
-    viewer3d_2.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d_2.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d_2.setParameter('RenderMode', opt.RenderMode);
-    viewer3d_2.setParameter('Definition', opt.Definition);
-    viewer3d_2.init();
-    viewer3d_2.update();
-}
-
-function changeOption(strOpt, strValue) {
-    console.log("change " + strOpt + " to " + strValue);
-    if (viewer3d_1) {
-        viewer3d_1.setParameter(strOpt, strValue);
-        viewer3d_1.init();
-        viewer3d_1.update();
-    }
-    if (viewer3d_2) {
-        viewer3d_2.setParameter(strOpt, strValue);
-        viewer3d_2.init();
-        viewer3d_2.update();
-    }
-}
-
-function openByUrl() {
-    var opt = getOptions();
-    var url1 = document.getElementById("url1").value;
-    var url2 = document.getElementById("url2").value;
-    // 加載兩個 STL 檔案
-    readSTLfile1(opt, url1);
-    readSTLfile2(opt, url2);
-}
-
-function openByPass() {
-    var opt = getOptions();
-    var fs = document.getElementById("pass").files;
-    var f1 = fs[0];
-    var f2 = fs[1];
-    var reader1 = new FileReader();
-    var reader2 = new FileReader();
-
-    reader1.onload = function (e) {
-        var url1 = e.target.result;
-        reader2.onload = function (e) {
-            var url2 = e.target.result;
-            readSTLfile1(opt, url1);
-            readSTLfile2(opt, url2);
-        };
-        reader2.readAsDataURL(f2);
-    };
-    reader1.readAsDataURL(f1);
-}
-
-function openByGet() {
-    var opt = getOptions();
-    var url1 = "https://s104.cycu.org/~41223236/1121-test1.stl";
-    var url2 = "https://s104.cycu.org/~41223236/1122-test2.stl"; // 第二個 STL 檔案的 URL
-    readSTLfile1(opt, url1);
-    readSTLfile2(opt, url2);
-}
-
-openByGet();
-</script>
-</p><h2>w11_ch</h2>
-<p></p>
 <p></p>
 <h2>w11_hw</h2>
 <p></p>

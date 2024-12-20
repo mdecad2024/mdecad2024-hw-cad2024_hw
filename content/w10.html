@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li><a href='W1、W2.html'>W1、W2</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='HW1_Exam.html'>HW1_Exam</a><li><a href='w7.html'>w7</a><li><a href='w10.html'>w10</a><li><a href='w11_ch.html'>w11_ch</a><li><a href='w11_hw.html'>w11_hw</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='HW2_Exam.html'>HW2_Exam</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li><a href='HW3_Exam.html'>HW3_Exam</a></li></ul><li class='has-children'><a href='HW4.html'>HW4</a><ul class='dropdown'><li><a href='HW4_Exam.html'>HW4_Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li><a href='W1、W2.html'>W1、W2</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='HW1_Exam.html'>HW1_Exam</a><li><a href='w7.html'>w7</a><li><a href='w10.html'>w10</a><li><a href='w11_hw.html'>w11_hw</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='HW2_Exam.html'>HW2_Exam</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li><a href='HW3_Exam.html'>HW3_Exam</a></li></ul><li class='has-children'><a href='HW4.html'>HW4</a><ul class='dropdown'><li><a href='HW4_Exam.html'>HW4_Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,7 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w11_ch.html'>Next</a> >> w11_ch<br /><h1>w10</h1>
+    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w11_hw.html'>Next</a> >> w11_hw<br /><h1>w10</h1>
 <p>題目一</p>
 <p>影片：</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/tUO9dLUq9Ko" width="560"></iframe></p>
@@ -166,114 +166,8 @@ img.add_border {
 <option>high</option>
 </select></p>
 </div>
-<p>
-<script type="text/javascript">
-var viewer3d_1, viewer3d_2;
-
-function getOptions() {
-    var mc = document.getElementById("mdlClr").value;
-    var bc1 = document.getElementById("bckClr1").value;
-    var bc2 = document.getElementById("bckClr2").value;
-    var ren = document.getElementById("render").value;
-    var def = document.getElementById("defini").value;
-    return {
-        ModelColor: mc,
-        BackgroundColor1: bc1,
-        BackgroundColor2: bc2,
-        RenderMode: ren,
-        Definition: def
-    };
-}
-
-// 創建 viewer 並加載第一個 STL 檔案
-function readSTLfile1(opt, url) {
-    var canvas = document.getElementById('cv1');  // 使用第一個 canvas
-    viewer3d_1 = new JSC3D.Viewer(canvas);
-    viewer3d_1.setParameter('SceneUrl', url);
-    viewer3d_1.setParameter('InitRotationX', 0);
-    viewer3d_1.setParameter('InitRotationY', 0);
-    viewer3d_1.setParameter('InitRotationZ', 0);
-    viewer3d_1.setParameter('ModelColor', opt.ModelColor);
-    viewer3d_1.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d_1.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d_1.setParameter('RenderMode', opt.RenderMode);
-    viewer3d_1.setParameter('Definition', opt.Definition);
-    viewer3d_1.init();
-    viewer3d_1.update();
-}
-
-// 創建 viewer 並加載第二個 STL 檔案
-function readSTLfile2(opt, url) {
-    var canvas = document.getElementById('cv2');  // 使用第二個 canvas
-    viewer3d_2 = new JSC3D.Viewer(canvas);
-    viewer3d_2.setParameter('SceneUrl', url);
-    viewer3d_2.setParameter('InitRotationX', 0);
-    viewer3d_2.setParameter('InitRotationY', 0);
-    viewer3d_2.setParameter('InitRotationZ', 0);
-    viewer3d_2.setParameter('ModelColor', opt.ModelColor);
-    viewer3d_2.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d_2.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d_2.setParameter('RenderMode', opt.RenderMode);
-    viewer3d_2.setParameter('Definition', opt.Definition);
-    viewer3d_2.init();
-    viewer3d_2.update();
-}
-
-function changeOption(strOpt, strValue) {
-    console.log("change " + strOpt + " to " + strValue);
-    if (viewer3d_1) {
-        viewer3d_1.setParameter(strOpt, strValue);
-        viewer3d_1.init();
-        viewer3d_1.update();
-    }
-    if (viewer3d_2) {
-        viewer3d_2.setParameter(strOpt, strValue);
-        viewer3d_2.init();
-        viewer3d_2.update();
-    }
-}
-
-function openByUrl() {
-    var opt = getOptions();
-    var url1 = document.getElementById("url1").value;
-    var url2 = document.getElementById("url2").value;
-    // 加載兩個 STL 檔案
-    readSTLfile1(opt, url1);
-    readSTLfile2(opt, url2);
-}
-
-function openByPass() {
-    var opt = getOptions();
-    var fs = document.getElementById("pass").files;
-    var f1 = fs[0];
-    var f2 = fs[1];
-    var reader1 = new FileReader();
-    var reader2 = new FileReader();
-
-    reader1.onload = function (e) {
-        var url1 = e.target.result;
-        reader2.onload = function (e) {
-            var url2 = e.target.result;
-            readSTLfile1(opt, url1);
-            readSTLfile2(opt, url2);
-        };
-        reader2.readAsDataURL(f2);
-    };
-    reader1.readAsDataURL(f1);
-}
-
-function openByGet() {
-    var opt = getOptions();
-    var url1 = "https://s104.cycu.org/~41223236/1121-test1.stl";
-    var url2 = "https://s104.cycu.org/~41223236/1122-test2.stl"; // 第二個 STL 檔案的 URL
-    readSTLfile1(opt, url1);
-    readSTLfile2(opt, url2);
-}
-
-openByGet();
-</script>
-</p>
-<br />w7 << <a href='w7.html'>Previous</a> <a href='w11_ch.html'>Next</a> >> w11_ch</div>
+<p></p>
+<br />w7 << <a href='w7.html'>Previous</a> <a href='w11_hw.html'>Next</a> >> w11_hw</div>
         
     <!-- footer -->
       <div class="container">
