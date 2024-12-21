@@ -39,202 +39,14 @@
 <p>利用 Solvespace 繪製列表中零件的操作過程與說明影片如下:</p>
 <p><span>練習影片：<a href="https://www.youtube.com/watch?v=bFxmyUXJabY">https://www.youtube.com/watch?v=bFxmyUXJabY</a></span></p>
 <p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/bFxmyUXJabY" width="560"></iframe></span><br/><span></span></p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
 <p></p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
 <p></p>
-<p><span>練習影片：<a href="https://www.youtube.com/watch?v=U-LPbretdX4">https://www.youtube.com/watch?v=U-LPbretdX4</a></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" data-mce-fragment="1" height="314" src="//www.youtube.com/embed/U-LPbretdX4" width="560"></iframe></span></p>
-<p><span></span></p>
-<p><span>練習影片：<a href="https://youtu.be/hE8XldOn_SA">https://youtu.be/hE8XldOn_SA</a></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" data-mce-fragment="1" height="314" src="//www.youtube.com/embed/hE8XldOn_SA" width="560"></iframe></span></p>
-<p><span></span></p>
-<p><span></span></p>
-<p><span>練習影片：<a href="https://youtu.be/jT6QlZY8q3Y">https://youtu.be/jT6QlZY8q3Y</a></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" data-mce-fragment="1" height="314" src="//www.youtube.com/embed/jT6QlZY8q3Y" width="560"></iframe></span></p>
-<p><span></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span></p>
-<p><span></span></p>
-<p><span>練習影片：<a href="https://youtu.be/vyN65L_jyAU">https://youtu.be/vyN65L_jyAU</a></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" data-mce-fragment="1" height="314" src="//www.youtube.com/embed/vyN65L_jyAU" width="560"></iframe></span></p>
-<p><span><a href="https://mdecad2024.github.io/hw-41223236/cmsimde/static/viewstl.html?src=https://s104.cycu.org/~41223236/1024-5.stl">https://mdecad2024.github.io/hw-41223236/cmsimde/static/viewstl.html?src=https://s104.cycu.org/~41223236/1024-5.stl</a></span></p>
-<p><span></span></p>
-<p><span></span></p>
-<p><span></span></p>
-<p><span>練習影片：<a href="https://youtu.be/Ge4bHm-Ahwg">https://youtu.be/Ge4bHm-Ahwg</a></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" data-mce-fragment="1" height="314" src="//www.youtube.com/embed/Ge4bHm-Ahwg" width="560"></iframe></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span></p>
-<p><span>練習影片：</span></p>
-<p><span></span>STL檔案：
-<script src="/static/jsc3d.js" type="text/javascript">
-</script>
-</p>
-<!-- 第一個 STL 模型 -->
-<p><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第二個 STL 模型 -->
-<p><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第三個 STL 模型 -->
-<p><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第四個 STL 模型 -->
-<p><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第五個 STL 模型 -->
-<p><canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第六個 STL 模型 -->
-<p><canvas height="300" id="cv6" style="border: 1px solid;" width="400"></canvas></p>
-<div style="width: 400px; height: 90px; border: 1px solid;">Model Color: <input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1: <input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2: <input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/> <br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
-<option>Flat</option>
-<option>Point</option>
-<option>Wireframe</option>
-<option>Smooth</option>
-</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
-<option>Standard</option>
-<option>low</option>
-<option>high</option>
-</select></div>
-<p><span>
-<script type="text/javascript">
-var viewer3d_1, viewer3d_2, viewer3d_3, viewer3d_4, viewer3d_5, viewer3d_6;
-
-function getOptions() {
-    var mc = document.getElementById("mdlClr").value;
-    var bc1 = document.getElementById("bckClr1").value;
-    var bc2 = document.getElementById("bckClr2").value;
-    var ren = document.getElementById("render").value;
-    var def = document.getElementById("defini").value;
-    return {
-        ModelColor: mc,
-        BackgroundColor1: bc1,
-        BackgroundColor2: bc2,
-        RenderMode: ren,
-        Definition: def
-    };
-}
-
-function readSTLfile(opt, canvasId) {
-    var canvas = document.getElementById(canvasId);
-    var viewer3d = new JSC3D.Viewer(canvas);
-    viewer3d.setParameter('SceneUrl', opt.SceneUrl);
-    viewer3d.setParameter('InitRotationX', 0);
-    viewer3d.setParameter('InitRotationY', 0);
-    viewer3d.setParameter('InitRotationZ', 0);
-    viewer3d.setParameter('ModelColor', opt.ModelColor);
-    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d.setParameter('RenderMode', opt.RenderMode);
-    viewer3d.setParameter('Definition', opt.Definition);
-    viewer3d.init();
-    viewer3d.update();
-
-    if (canvasId === "cv1") {
-        viewer3d_1 = viewer3d;  // 保存第一個 viewer 實例
-    } else if (canvasId === "cv2") {
-        viewer3d_2 = viewer3d;  // 保存第二個 viewer 實例
-    } else if (canvasId === "cv3") {
-        viewer3d_3 = viewer3d;  // 保存第三個 viewer 實例
-    } else if (canvasId === "cv4") {
-        viewer3d_4 = viewer3d;  // 保存第四個 viewer 實例
-    } else if (canvasId === "cv5") {
-        viewer3d_5 = viewer3d;  // 保存第五個 viewer 實例
-    } else if (canvasId === "cv6") {
-        viewer3d_6 = viewer3d;  // 保存第六個 viewer 實例
-    }
-}
-
-function changeOption(strOpt, strValue) {
-    console.log("change " + strOpt + " to " + strValue);
-    if (viewer3d_1) {
-        viewer3d_1.setParameter(strOpt, strValue);
-        viewer3d_1.init();
-        viewer3d_1.update();
-    }
-    if (viewer3d_2) {
-        viewer3d_2.setParameter(strOpt, strValue);
-        viewer3d_2.init();
-        viewer3d_2.update();
-    }
-    if (viewer3d_3) {
-        viewer3d_3.setParameter(strOpt, strValue);
-        viewer3d_3.init();
-        viewer3d_3.update();
-    }
-    if (viewer3d_4) {
-        viewer3d_4.setParameter(strOpt, strValue);
-        viewer3d_4.init();
-        viewer3d_4.update();
-    }
-    if (viewer3d_5) {
-        viewer3d_5.setParameter(strOpt, strValue);
-        viewer3d_5.init();
-        viewer3d_5.update();
-    }
-    if (viewer3d_6) {
-        viewer3d_6.setParameter(strOpt, strValue);
-        viewer3d_6.init();
-        viewer3d_6.update();
-    }
-}
-
-function openByGet() {
-    var url1 = "https://s104.cycu.org/~41223236/1018-2.stl";  // 第一個 STL 的 URL
-    var url2 = "https://s104.cycu.org/~41223236/1018-3.stl";  // 第二個 STL 的 URL
-    var url3 = "https://s104.cycu.org/~41223236/1024-5.stl";  // 第三個 STL 的 URL
-    var url4 = "https://s104.cycu.org/~41223236/1024-6.stl";  // 第四個 STL 的 URL
-    var url5 = "https://s104.cycu.org/~41223236/1101-7.stl";  // 第五個 STL 的 URL
-    var url6 = "https://s104.cycu.org/~41223236/1101-9.stl";  // 第六個 STL 的 URL
-    var opt = getOptions();
-
-    // 設置第一個 STL 的 URL 和渲染
-    opt.SceneUrl = url1;
-    readSTLfile(opt, "cv1");
-
-    // 設置第二個 STL 的 URL 和渲染
-    opt.SceneUrl = url2;
-    readSTLfile(opt, "cv2");
-
-    // 設置第三個 STL 的 URL 和渲染
-    opt.SceneUrl = url3;
-    readSTLfile(opt, "cv3");
-
-    // 設置第四個 STL 的 URL 和渲染
-    opt.SceneUrl = url4;
-    readSTLfile(opt, "cv4");
-
-    // 設置第五個 STL 的 URL 和渲染
-    opt.SceneUrl = url5;
-    readSTLfile(opt, "cv5");
-
-    // 設置第六個 STL 的 URL 和渲染
-    opt.SceneUrl = url6;
-    readSTLfile(opt, "cv6");
-}
-
-function GetQueryString() {
-    if (1 < window.location.search.length) {
-        var query = window.location.search.substring(1);
-        var parameters = query.split('&');
-        var result = {};
-        for (var i = 0; i < parameters.length; i++) {
-            var element = parameters[i].split('=');
-            var paramName = decodeURIComponent(element[0]);
-            var paramValue = decodeURIComponent(element[1]);
-            result[paramName] = decodeURIComponent(paramValue);
-        }
-        return result;
-    }
-    return null;
-}
-
-openByGet();
-</script>
-</span></p>
-<p><span></span></p>
-<p><span></span></p>
 <p style="padding-left: 30px;"></p>
 <p>利用 NX2312 繪製列表中零件的操作過程與說明影片如下:</p>
 <p style="padding-left: 30px;">影片標題: 國立虎尾科技大學機械設計工程系電腦輔助設計與實習- 作業二之二</p>
@@ -249,8 +61,7 @@ openByGet();
 <p>HW1 自評分數:</p>
 <p style="padding-left: 30px;">70分，我很努力在完成此項作業。</p>
 <p style="padding-left: 30px;"><span>完成上述流程後, 請將 HW2 自評分數輸入 cad2024 自評表單中.</span></p>
-<p style="padding-left: 30px;"></p>
-<h2>HW1_Exam</h2>
+<p style="padding-left: 30px;"></p><h2>HW1_Exam</h2>
 <p>從<a href="http://229.cycu.org/part_modeling_projects.pdf">零件模擬練習</a>中選出零件, 隨堂進行考試.</p>
 <p>零件考試題目以 Solvespace 繪圖操作過程影片如下:</p>
 <p style="padding-left: 30px;">請將操作影片嵌入 ......</p>
@@ -258,6 +69,7 @@ openByGet();
 <p>零件考試題目以 NX2312 繪圖操作過程影片如下:</p>
 <p style="padding-left: 30px;">請將操作影片嵌入 ......</p>
 <p style="padding-left: 30px;">所完成的零件檔案下載</p>
+<h2>練習</h2>
 <h2>w7</h2>
 <p></p>
 <h2>w10</h2>
@@ -287,7 +99,41 @@ openByGet();
 </div>
 <p></p>
 <h2>w11_hw</h2>
-<p> </p><h1>HW2</h1>
+<p>零件：<a href="/downloads/Bobine Batteur_sldprt.7z">/downloads/Bobine Batteur_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/axBKTHQGcS0" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Flipper_sldprt.7z">/downloads/Flipper_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/i_dHvYEImFQ" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Plastique Flipper_sldprt.7z">/downloads/Plastique Flipper_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/itQRRqYHIwo" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Fourreau Batteur_sldprt.7z">/downloads/Fourreau Batteur_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/nNOkQ3per9c" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Piece composite_sldprt.7z">/downloads/Piece composite_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/kvNYVHfgyLI" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Piece métalique gauche_sldprt.7z">/downloads/Piece métalique gauche_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/grIkCLUGhiU" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Plongeur Batteur_sldprt.7z">/downloads/Plongeur Batteur_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xgNh7sOJsZk" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Platine Batteur_sldprt.7z">/downloads/Platine Batteur_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/J6G3DNpZCuQ" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Support Bobine_sldprt.7z">/downloads/Support Bobine_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Mr2cBBI5lSY" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/Support Switch_sldprt.7z">/downloads/Support Switch_sldprt.7z</a></p>
+<p>影片：<iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Tvi_ypT6eWE" width="560"></iframe></p>
+<p></p>
+<p>零件：<a href="/downloads/pincall_flipper_design_sldasm.7z">/downloads/pincall_flipper_design_sldasm.7z</a></p>
+<p>影片：</p>
+<p></p>
+<p></p>
+<h1>HW2</h1>
 <p>Homework 2 (10%):</p>
 <p style="padding-left: 30px;">利用 Solvespace 與 NX 建立 <a href="https://mde.tw/cad2024/content/BonW.html">Balance on Wheels</a> 組立件</p>
 <hr/>
