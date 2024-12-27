@@ -2,7 +2,7 @@
         <head>
         <title>cad_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,21 +141,167 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w16_exam2 << <a href='w16_exam2.html'>Previous</a> <a href='HW4_Exam.html'>Next</a> >> HW4_Exam<br /><h1>HW4</h1>
-<p>Homework 4 (20%):</p>
-<p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/Quadruped.html">Dingo 機器狗</a>控制系統設計模擬場景</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecycu/DingoQuadruped">https://github.com/mdecycu/DingoQuadruped</a></p>
-<p style="padding-left: 30px;"><a href="http://229.cycu.org/DINGO_QUADRUPED_CAD.7z">DINGO_QUADRUPED_CAD.7z</a></p>
-<p style="padding-left: 30px;"><img alt="" height="217" src="https://mde.tw/cad2024/images/dingo.png" width="400"/></p>
-<hr/>
-<p>利用 CoppeliaSim 建立 <a href="https://mde.tw/cad2024/content/Quadruped.html">Dingo 機器狗</a>控制系統設計模擬場景的操作過程與說明影片如下:</p>
-<p style="padding-left: 30px;">影片標題: 國立虎尾科技大學機械設計工程系電腦輔助設計與實習- 作業四</p>
-<p style="padding-left: 30px;">所完成的場景與控制程式檔案下載</p>
-<p>HW4 執行心得:</p>
-<p style="padding-left: 30px;">....</p>
-<p>HW4 自評分數:</p>
-<p style="padding-left: 30px;">完成上述流程後, 請將 HW4 自評分數輸入 cad2024 自評表單中.</p>
-<br />w16_exam2 << <a href='w16_exam2.html'>Previous</a> <a href='HW4_Exam.html'>Next</a> >> HW4_Exam</div>
+    <div id="tipue_search_content">練習 << <a href='練習.html'>Previous</a> <a href='w7.html'>Next</a> >> w7<br /><h1>STL檔案</h1>
+<script src="./../cmsimde/static/jsc3d.js" type="text/javascript">
+</script>
+<!-- 第一個 STL 模型 -->
+<p><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第二個 STL 模型 -->
+<p><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第三個 STL 模型 -->
+<p><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第四個 STL 模型 -->
+<p><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第五個 STL 模型 -->
+<p><canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></p>
+<!-- 第六個 STL 模型 -->
+<p><canvas height="300" id="cv6" style="border: 1px solid;" width="400"></canvas></p>
+<div style="width: 400px; height: 90px; border: 1px solid;">Model Color: <input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1: <input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2: <input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/> <br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
+<option>Flat</option>
+<option>Point</option>
+<option>Wireframe</option>
+<option>Smooth</option>
+</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
+<option>Standard</option>
+<option>low</option>
+<option>high</option>
+</select></div>
+<p><span>
+<script type="text/javascript">
+var viewer3d_1, viewer3d_2, viewer3d_3, viewer3d_4, viewer3d_5, viewer3d_6;
+
+function getOptions() {
+    var mc = document.getElementById("mdlClr").value;
+    var bc1 = document.getElementById("bckClr1").value;
+    var bc2 = document.getElementById("bckClr2").value;
+    var ren = document.getElementById("render").value;
+    var def = document.getElementById("defini").value;
+    return {
+        ModelColor: mc,
+        BackgroundColor1: bc1,
+        BackgroundColor2: bc2,
+        RenderMode: ren,
+        Definition: def
+    };
+}
+
+function readSTLfile(opt, canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var viewer3d = new JSC3D.Viewer(canvas);
+    viewer3d.setParameter('SceneUrl', opt.SceneUrl);
+    viewer3d.setParameter('InitRotationX', 0);
+    viewer3d.setParameter('InitRotationY', 0);
+    viewer3d.setParameter('InitRotationZ', 0);
+    viewer3d.setParameter('ModelColor', opt.ModelColor);
+    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
+    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
+    viewer3d.setParameter('RenderMode', opt.RenderMode);
+    viewer3d.setParameter('Definition', opt.Definition);
+    viewer3d.init();
+    viewer3d.update();
+
+    if (canvasId === "cv1") {
+        viewer3d_1 = viewer3d;  // 保存第一個 viewer 實例
+    } else if (canvasId === "cv2") {
+        viewer3d_2 = viewer3d;  // 保存第二個 viewer 實例
+    } else if (canvasId === "cv3") {
+        viewer3d_3 = viewer3d;  // 保存第三個 viewer 實例
+    } else if (canvasId === "cv4") {
+        viewer3d_4 = viewer3d;  // 保存第四個 viewer 實例
+    } else if (canvasId === "cv5") {
+        viewer3d_5 = viewer3d;  // 保存第五個 viewer 實例
+    } else if (canvasId === "cv6") {
+        viewer3d_6 = viewer3d;  // 保存第六個 viewer 實例
+    }
+}
+
+function changeOption(strOpt, strValue) {
+    console.log("change " + strOpt + " to " + strValue);
+    if (viewer3d_1) {
+        viewer3d_1.setParameter(strOpt, strValue);
+        viewer3d_1.init();
+        viewer3d_1.update();
+    }
+    if (viewer3d_2) {
+        viewer3d_2.setParameter(strOpt, strValue);
+        viewer3d_2.init();
+        viewer3d_2.update();
+    }
+    if (viewer3d_3) {
+        viewer3d_3.setParameter(strOpt, strValue);
+        viewer3d_3.init();
+        viewer3d_3.update();
+    }
+    if (viewer3d_4) {
+        viewer3d_4.setParameter(strOpt, strValue);
+        viewer3d_4.init();
+        viewer3d_4.update();
+    }
+    if (viewer3d_5) {
+        viewer3d_5.setParameter(strOpt, strValue);
+        viewer3d_5.init();
+        viewer3d_5.update();
+    }
+    if (viewer3d_6) {
+        viewer3d_6.setParameter(strOpt, strValue);
+        viewer3d_6.init();
+        viewer3d_6.update();
+    }
+}
+
+function openByGet() {
+    var url1 = "https://s104.cycu.org/~41223236/1018-2.stl";  // 第一個 STL 的 URL
+    var url2 = "https://s104.cycu.org/~41223236/1018-3.stl";  // 第二個 STL 的 URL
+    var url3 = "https://s104.cycu.org/~41223236/1024-5.stl";  // 第三個 STL 的 URL
+    var url4 = "https://s104.cycu.org/~41223236/1024-6.stl";  // 第四個 STL 的 URL
+    var url5 = "https://s104.cycu.org/~41223236/1101-7.stl";  // 第五個 STL 的 URL
+    var url6 = "https://s104.cycu.org/~41223236/1101-9.stl";  // 第六個 STL 的 URL
+    var opt = getOptions();
+
+    // 設置第一個 STL 的 URL 和渲染
+    opt.SceneUrl = url1;
+    readSTLfile(opt, "cv1");
+
+    // 設置第二個 STL 的 URL 和渲染
+    opt.SceneUrl = url2;
+    readSTLfile(opt, "cv2");
+
+    // 設置第三個 STL 的 URL 和渲染
+    opt.SceneUrl = url3;
+    readSTLfile(opt, "cv3");
+
+    // 設置第四個 STL 的 URL 和渲染
+    opt.SceneUrl = url4;
+    readSTLfile(opt, "cv4");
+
+    // 設置第五個 STL 的 URL 和渲染
+    opt.SceneUrl = url5;
+    readSTLfile(opt, "cv5");
+
+    // 設置第六個 STL 的 URL 和渲染
+    opt.SceneUrl = url6;
+    readSTLfile(opt, "cv6");
+}
+
+function GetQueryString() {
+    if (1 < window.location.search.length) {
+        var query = window.location.search.substring(1);
+        var parameters = query.split('&');
+        var result = {};
+        for (var i = 0; i < parameters.length; i++) {
+            var element = parameters[i].split('=');
+            var paramName = decodeURIComponent(element[0]);
+            var paramValue = decodeURIComponent(element[1]);
+            result[paramName] = decodeURIComponent(paramValue);
+        }
+        return result;
+    }
+    return null;
+}
+
+openByGet();
+</script>
+</span></p><br />練習 << <a href='練習.html'>Previous</a> <a href='w7.html'>Next</a> >> w7</div>
         
     <!-- footer -->
       <div class="container">
