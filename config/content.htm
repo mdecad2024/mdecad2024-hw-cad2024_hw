@@ -197,14 +197,14 @@ function readSTLfile(opt, stlUrl, canvasId){
 function loadSTLFiles(){
     var opt = getOptions();
     var stlUrls = [
-        "https://s104.cycu.org/~41223236/1018-2.stl",
+        "https://s104.cycu.org/~41223236/第一題.stl",
         "https://s104.cycu.org/~41223236/1018-2.stl",
         "https://s104.cycu.org/~41223236/1018-3.stl",
         "https://s104.cycu.org/~41223236/第4題.stl",
         "https://s104.cycu.org/~41223236/1024-5.stl",
         "https://s104.cycu.org/~41223236/1024-6.stl",
         "https://s104.cycu.org/~41223236/1101-7.stl",
-        "https://s104.cycu.org/~41223236/第8題.stl",
+        "https://s104.cycu.org/~41223236/88888.stl",
         "https://s104.cycu.org/~41223236/1101-9.stl",
         "https://s104.cycu.org/~41223236/第10題.stl",
         "https://s104.cycu.org/~41223236/第11題.stl",
@@ -309,8 +309,77 @@ loadSTLFiles(); // Load the STL files when the page loads
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Qjp02L6mNsg" width="560"></iframe></p>
 <p><span></span></p>
-<p><span></span></p>
-<h1>HW3</h1>
+<p><span>   STL檔案：</span></p>
+<script src="/static/jsc3d.js" type="text/javascript"></script>
+<!-- Create 11 canvas elements for displaying STL files -->
+<div style="display: flex; flex-wrap: wrap;">
+<div style="margin: 10px;"><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px; width: 400px; height: 90px; border: 1px solid;">Model Color:<input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1:<input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2:<input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/><br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
+<option>Flat</option>
+<option>Point</option>
+<option>Wireframe</option>
+<option>Smooth</option>
+</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
+<option>Standard</option>
+<option>low</option>
+<option>high</option>
+</select></div>
+<script type="text/javascript">
+var viewers = [];
+
+function getOptions(){
+    var mc = document.getElementById("mdlClr").value;
+    var bc1 = document.getElementById("bckClr1").value;
+    var bc2 = document.getElementById("bckClr2").value;
+    var ren = document.getElementById("render").value;
+    var def = document.getElementById("defini").value;
+    return {
+        ModelColor: mc,
+        BackgroundColor1: bc1,
+        BackgroundColor2: bc2,
+        RenderMode: ren,
+        Definition: def
+    };
+}
+
+function readSTLfile(opt, stlUrl, canvasId){
+    var canvas = document.getElementById(canvasId);
+    var viewer3d = new JSC3D.Viewer(canvas);
+    viewer3d.setParameter('SceneUrl', stlUrl);
+    viewer3d.setParameter('InitRotationX', 0);
+    viewer3d.setParameter('InitRotationY', 0);
+    viewer3d.setParameter('InitRotationZ', 0);
+    viewer3d.setParameter('ModelColor', opt.ModelColor);
+    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
+    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
+    viewer3d.setParameter('RenderMode', opt.RenderMode);
+    viewer3d.setParameter('Definition', opt.Definition);
+    viewer3d.init();
+    viewer3d.update();
+    viewers.push(viewer3d);  // Store viewer instance for later control if needed
+}
+
+function loadSTLFiles(){
+    var opt = getOptions();
+    var stlUrls = [
+        "https://s104.cycu.org/~41223236/2222.stl",
+        "https://s104.cycu.org/~41223236/3333.stl",
+        "https://s104.cycu.org/~41223236/1111.stl",
+
+    ];
+    
+    // Load each STL file into its respective canvas
+    for (var i = 0; i < stlUrls.length; i++) {
+        var canvasId = 'cv' + (i + 1);  // Generate the canvas ID dynamically
+        readSTLfile(opt, stlUrls[i], canvasId);
+    }
+}
+
+loadSTLFiles(); // Load the STL files when the page loads
+</script>
+</div><h1>HW3</h1>
 <p>Homework 3 (20%):</p>
 <p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/BonW.html">Balance on Wheels</a> 控制系統設計模擬場景</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/Balance_On_Wheels">https://github.com/mdecycu/Balance_On_Wheels</a></p>
@@ -341,7 +410,80 @@ loadSTLFiles(); // Load the STL files when the page loads
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/zKqmfdDxo1s" width="560"></iframe></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/QrirYT2z7-4" width="560"></iframe></p>
 <p></p>
-<h1>HW4</h1>
+<p><span></span>   STL檔案：</p>
+<script src="/static/jsc3d.js" type="text/javascript"></script>
+<!-- Create 11 canvas elements for displaying STL files -->
+<div style="display: flex; flex-wrap: wrap;">
+<div style="margin: 10px;"><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px; width: 400px; height: 90px; border: 1px solid;">Model Color:<input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1:<input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2:<input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/><br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
+<option>Flat</option>
+<option>Point</option>
+<option>Wireframe</option>
+<option>Smooth</option>
+</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
+<option>Standard</option>
+<option>low</option>
+<option>high</option>
+</select></div>
+<script type="text/javascript">
+var viewers = [];
+
+function getOptions(){
+    var mc = document.getElementById("mdlClr").value;
+    var bc1 = document.getElementById("bckClr1").value;
+    var bc2 = document.getElementById("bckClr2").value;
+    var ren = document.getElementById("render").value;
+    var def = document.getElementById("defini").value;
+    return {
+        ModelColor: mc,
+        BackgroundColor1: bc1,
+        BackgroundColor2: bc2,
+        RenderMode: ren,
+        Definition: def
+    };
+}
+
+function readSTLfile(opt, stlUrl, canvasId){
+    var canvas = document.getElementById(canvasId);
+    var viewer3d = new JSC3D.Viewer(canvas);
+    viewer3d.setParameter('SceneUrl', stlUrl);
+    viewer3d.setParameter('InitRotationX', 0);
+    viewer3d.setParameter('InitRotationY', 0);
+    viewer3d.setParameter('InitRotationZ', 0);
+    viewer3d.setParameter('ModelColor', opt.ModelColor);
+    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
+    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
+    viewer3d.setParameter('RenderMode', opt.RenderMode);
+    viewer3d.setParameter('Definition', opt.Definition);
+    viewer3d.init();
+    viewer3d.update();
+    viewers.push(viewer3d);  // Store viewer instance for later control if needed
+}
+
+function loadSTLFiles(){
+    var opt = getOptions();
+    var stlUrls = [
+        "https://s104.cycu.org/~41223236/5555.stl",
+        "https://s104.cycu.org/~41223236/6666.stl",
+        "https://s104.cycu.org/~41223236/4444.stl",
+        "https://s104.cycu.org/~41223236/組合圖.stl",
+
+
+    ];
+    
+    // Load each STL file into its respective canvas
+    for (var i = 0; i < stlUrls.length; i++) {
+        var canvasId = 'cv' + (i + 1);  // Generate the canvas ID dynamically
+        readSTLfile(opt, stlUrls[i], canvasId);
+    }
+}
+
+loadSTLFiles(); // Load the STL files when the page loads
+</script>
+</div><h1>HW4</h1>
 <p>Homework 4 (20%):</p>
 <p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/Quadruped.html">Dingo 機器狗</a>控制系統設計模擬場景</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/DingoQuadruped">https://github.com/mdecycu/DingoQuadruped</a></p>
