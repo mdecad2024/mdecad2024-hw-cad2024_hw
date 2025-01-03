@@ -130,24 +130,25 @@
 <p><span>第十二題</span></p>
 <p><span>零件：</span></p>
 <p><span>練習影片：</span></p>
-<p><span> </span></p>
-<p><br/><br/></p>
 <h3>STL檔案</h3>
-<script src="/static/jsc3d.js" type="text/javascript">
-</script>
-<!-- 第一個 STL 模型 -->
-<p><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第二個 STL 模型 -->
-<p><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第三個 STL 模型 -->
-<p><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第四個 STL 模型 -->
-<p><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第五個 STL 模型 -->
-<p><canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></p>
-<!-- 第六個 STL 模型 -->
-<p><canvas height="300" id="cv6" style="border: 1px solid;" width="400"></canvas></p>
-<div style="width: 400px; height: 90px; border: 1px solid;">Model Color: <input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1: <input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2: <input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/> <br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
+<p style="text-align: left;">
+<script src="/static/jsc3d.js" type="text/javascript"></script>
+</p>
+<!-- Create 11 canvas elements for displaying STL files -->
+<div style="display: flex; flex-wrap: wrap; text-align: left;">
+<div style="margin: 10px;"><canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv6" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv7" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv8" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv9" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv10" style="border: 1px solid;" width="400"></canvas></div>
+<div style="margin: 10px;"><canvas height="300" id="cv11" style="border: 1px solid;" width="400"></canvas></div>
+</div>
+<div style="margin: 10px; width: 400px; height: 90px; border: 1px solid; text-align: left;">Model Color:<input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1:<input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2:<input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/><br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
 <option>Flat</option>
 <option>Point</option>
 <option>Wireframe</option>
@@ -157,11 +158,11 @@
 <option>low</option>
 <option>high</option>
 </select></div>
-<p><span>
+<p>
 <script type="text/javascript">
-var viewer3d_1, viewer3d_2, viewer3d_3, viewer3d_4, viewer3d_5, viewer3d_6;
+var viewers = [];
 
-function getOptions() {
+function getOptions(){
     var mc = document.getElementById("mdlClr").value;
     var bc1 = document.getElementById("bckClr1").value;
     var bc2 = document.getElementById("bckClr2").value;
@@ -176,10 +177,10 @@ function getOptions() {
     };
 }
 
-function readSTLfile(opt, canvasId) {
+function readSTLfile(opt, stlUrl, canvasId){
     var canvas = document.getElementById(canvasId);
     var viewer3d = new JSC3D.Viewer(canvas);
-    viewer3d.setParameter('SceneUrl', opt.SceneUrl);
+    viewer3d.setParameter('SceneUrl', stlUrl);
     viewer3d.setParameter('InitRotationX', 0);
     viewer3d.setParameter('InitRotationY', 0);
     viewer3d.setParameter('InitRotationZ', 0);
@@ -190,116 +191,42 @@ function readSTLfile(opt, canvasId) {
     viewer3d.setParameter('Definition', opt.Definition);
     viewer3d.init();
     viewer3d.update();
-
-    if (canvasId === "cv1") {
-        viewer3d_1 = viewer3d;  // 保存第一個 viewer 實例
-    } else if (canvasId === "cv2") {
-        viewer3d_2 = viewer3d;  // 保存第二個 viewer 實例
-    } else if (canvasId === "cv3") {
-        viewer3d_3 = viewer3d;  // 保存第三個 viewer 實例
-    } else if (canvasId === "cv4") {
-        viewer3d_4 = viewer3d;  // 保存第四個 viewer 實例
-    } else if (canvasId === "cv5") {
-        viewer3d_5 = viewer3d;  // 保存第五個 viewer 實例
-    } else if (canvasId === "cv6") {
-        viewer3d_6 = viewer3d;  // 保存第六個 viewer 實例
-    }
+    viewers.push(viewer3d);  // Store viewer instance for later control if needed
 }
 
-function changeOption(strOpt, strValue) {
-    console.log("change " + strOpt + " to " + strValue);
-    if (viewer3d_1) {
-        viewer3d_1.setParameter(strOpt, strValue);
-        viewer3d_1.init();
-        viewer3d_1.update();
-    }
-    if (viewer3d_2) {
-        viewer3d_2.setParameter(strOpt, strValue);
-        viewer3d_2.init();
-        viewer3d_2.update();
-    }
-    if (viewer3d_3) {
-        viewer3d_3.setParameter(strOpt, strValue);
-        viewer3d_3.init();
-        viewer3d_3.update();
-    }
-    if (viewer3d_4) {
-        viewer3d_4.setParameter(strOpt, strValue);
-        viewer3d_4.init();
-        viewer3d_4.update();
-    }
-    if (viewer3d_5) {
-        viewer3d_5.setParameter(strOpt, strValue);
-        viewer3d_5.init();
-        viewer3d_5.update();
-    }
-    if (viewer3d_6) {
-        viewer3d_6.setParameter(strOpt, strValue);
-        viewer3d_6.init();
-        viewer3d_6.update();
-    }
-}
-
-function openByGet() {
-    var url1 = "https://s104.cycu.org/~41223236/1018-2.stl";  // 第一個 STL 的 URL
-    var url2 = "https://s104.cycu.org/~41223236/1018-3.stl";  // 第二個 STL 的 URL
-    var url3 = "https://s104.cycu.org/~41223236/1024-5.stl";  // 第三個 STL 的 URL
-    var url4 = "https://s104.cycu.org/~41223236/1024-6.stl";  // 第四個 STL 的 URL
-    var url5 = "https://s104.cycu.org/~41223236/1101-7.stl";  // 第五個 STL 的 URL
-    var url6 = "https://s104.cycu.org/~41223236/1101-9.stl";  // 第六個 STL 的 URL
+function loadSTLFiles(){
     var opt = getOptions();
-
-    // 設置第一個 STL 的 URL 和渲染
-    opt.SceneUrl = url1;
-    readSTLfile(opt, "cv1");
-
-    // 設置第二個 STL 的 URL 和渲染
-    opt.SceneUrl = url2;
-    readSTLfile(opt, "cv2");
-
-    // 設置第三個 STL 的 URL 和渲染
-    opt.SceneUrl = url3;
-    readSTLfile(opt, "cv3");
-
-    // 設置第四個 STL 的 URL 和渲染
-    opt.SceneUrl = url4;
-    readSTLfile(opt, "cv4");
-
-    // 設置第五個 STL 的 URL 和渲染
-    opt.SceneUrl = url5;
-    readSTLfile(opt, "cv5");
-
-    // 設置第六個 STL 的 URL 和渲染
-    opt.SceneUrl = url6;
-    readSTLfile(opt, "cv6");
-}
-
-function GetQueryString() {
-    if (1 < window.location.search.length) {
-        var query = window.location.search.substring(1);
-        var parameters = query.split('&');
-        var result = {};
-        for (var i = 0; i < parameters.length; i++) {
-            var element = parameters[i].split('=');
-            var paramName = decodeURIComponent(element[0]);
-            var paramValue = decodeURIComponent(element[1]);
-            result[paramName] = decodeURIComponent(paramValue);
-        }
-        return result;
+    var stlUrls = [
+        "https://s104.cycu.org/~41223236/1018-2.stl",
+        "https://s104.cycu.org/~41223236/1018-2.stl",
+        "https://s104.cycu.org/~41223236/1018-3.stl",
+        "https://s104.cycu.org/~41223236/第4題.stl",
+        "https://s104.cycu.org/~41223236/1024-5.stl",
+        "https://s104.cycu.org/~41223236/1024-6.stl",
+        "https://s104.cycu.org/~41223236/1101-7.stl",
+        "https://s104.cycu.org/~41223236/第8題.stl",
+        "https://s104.cycu.org/~41223236/1101-9.stl",
+        "https://s104.cycu.org/~41223236/第10題.stl",
+        "https://s104.cycu.org/~41223236/第11題.stl",
+    ];
+    
+    // Load each STL file into its respective canvas
+    for (var i = 0; i < stlUrls.length; i++) {
+        var canvasId = 'cv' + (i + 1);  // Generate the canvas ID dynamically
+        readSTLfile(opt, stlUrls[i], canvasId);
     }
-    return null;
 }
 
-openByGet();
+loadSTLFiles(); // Load the STL files when the page loads
 </script>
-</span></p>
-<h2>w7</h2>
+</p><h2>w7</h2>
 <p><a href="/downloads/W7組合圖.7z">/downloads/W7組合圖.7z</a></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/gJvxuQ_GnrY" width="560"></iframe></p>
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Rs9IGXMuHQQ" width="560"></iframe></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ylmp3AliqbU" width="560"></iframe></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/dQw95KFr8Og" width="560"></iframe></p><h2>w10</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/dQw95KFr8Og" width="560"></iframe></p>
+<h2>w10</h2>
 <p>題目一</p>
 <p>影片：</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/tUO9dLUq9Ko" width="560"></iframe></p>
@@ -369,7 +296,11 @@ openByGet();
 <p>影片：</p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/-57MKen1lgg" width="560"></iframe></p>
 <p></p>
-<p></p><h1>HW2</h1>
+<p></p>
+<p>影片：</p>
+<p></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ChwYyG9CYmw" width="560"></iframe></p>
+<h1>HW2</h1>
 <p>Homework 2 (10%):</p>
 <p style="padding-left: 30px;">利用 Solvespace 與 NX 建立 <a href="https://mde.tw/cad2024/content/BonW.html">Balance on Wheels</a> 組立件</p>
 <hr/>
@@ -428,7 +359,8 @@ openByGet();
 <p></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/zKqmfdDxo1s" width="560"></iframe></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/QrirYT2z7-4" width="560"></iframe></p>
-<p></p><h1>HW4</h1>
+<p></p>
+<h1>HW4</h1>
 <p>Homework 4 (20%):</p>
 <p style="padding-left: 30px;">建立 <a href="https://mde.tw/cad2024/content/Quadruped.html">Dingo 機器狗</a>控制系統設計模擬場景</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecycu/DingoQuadruped">https://github.com/mdecycu/DingoQuadruped</a></p>
@@ -450,7 +382,8 @@ openByGet();
 <h3>w16_exam3</h3>
 <p><span><a href="/downloads/41223236_w16_exam3.7z">/downloads/41223236_w16_exam3.7z</a></span></p>
 <p><span></span></p>
-<p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ZZJsvQuW4_o" width="560"></iframe></span></p><h1>Final Report</h1>
+<p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ZZJsvQuW4_o" width="560"></iframe></span></p>
+<h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (30%)</p>
 <p>期末口頭專題報告影片:</p>
 <p style="padding-left: 30px;">......</p>
